@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "264505219335",
+    "project_id": "ctrl-1dae6",
+    "storage_bucket": "ctrl-1dae6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264505219335:android:bc0ed8ff605c668fb34da2",
+        "android_client_info": {
+          "package_name": "com.anonymous.CTRL"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUdhA3GAghPV5vzyQsoMgS6Sm01l9AOG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
