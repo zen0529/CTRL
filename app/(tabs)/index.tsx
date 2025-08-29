@@ -1,14 +1,42 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { s, vs } from "react-native-size-matters";
 
 const index = () => {
+  const insets = useSafeAreaInsets();
+  const month = new Date().toLocaleString("default", { month: "long" });
+  const router = useRouter();
+  const [modal, setModal] = useState(false);
   return (
-    <View>
-      <Text className='text-3'>index</Text>
+    <View
+      style={{
+        paddingTop: insets.top,
+        // paddingRight: insets.right,
+      }}
+      className="h-full w-full"
+    >
+      <View
+        className="flex-col border border-black"
+        style={{ marginLeft: s(20), marginRight: s(20) }}
+      >
+        <View
+          className="flex-row justify-between items-between"
+          style={{ paddingHorizontal: s(20), paddingTop: vs(10) }}
+        >
+          <Text>{month}</Text>
+          <TouchableOpacity onPress={() => router.push('/components/calendar/Calendar')}>
+            <Ionicons name="calendar" size={24} color="#007AFF"></Ionicons>
+          </TouchableOpacity >
+          {/* <Calendar /> */}
+        </View>
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default index
+export default index;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

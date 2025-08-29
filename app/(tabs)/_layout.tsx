@@ -2,6 +2,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
@@ -12,17 +13,20 @@ const TabIcon = ({ focused, icon, title }: any) => {
         <Text className="text-secondary text-base font-semibold ml-2 text-[#00bfff]">
           {title}
         </Text>
-        <View className="border border-[#00bfff] " style={{
-          width: 60,
-          marginLeft:7,
-        }}></View>
+        <View
+          className="border border-[#00bfff] "
+          style={{
+            width: 60,
+            marginLeft: 7,
+          }}
+        ></View>
       </View>
     );
   }
   return (
     <View className="flex flex-col w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden ">
       {/* <Image source={icon} tintColor="#A8B5DB" className="size-5" /> */}
-      <Ionicons name={icon} size={20} color="#000"/>
+      <Ionicons name={icon} size={20} color="#000" />
       <Text>{title}</Text>
     </View>
   );
@@ -30,73 +34,62 @@ const TabIcon = ({ focused, icon, title }: any) => {
 const _layout = () => {
   return (
     // hiding index screen from the header
-    <Tabs
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarItemStyle: {
-          marginTop: 10,
-          width: "100%",
-          height: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        },
-        tabBarStyle: {
-          // backgroundColor: "#",
-          // borderRadius: 50,
-          height: 100,
-          position: "absolute",
-          overflow: "hidden",
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon
-              focused={focused}
-              icon="home"
-              title="Home"
-            />
-          ),
+    <SafeAreaProvider>
+      <Tabs
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarItemStyle: {
+            marginTop: 10,
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+          tabBarStyle: {
+            // backgroundColor: "#",
+            // borderRadius: 50,
+            height: 100,
+            position: "absolute",
+            overflow: "hidden",
+          },
         }}
-      />
-      <Tabs.Screen
-        name="journal"
-        options={{
-          title: "Journal",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon
-              focused={focused}
-              icon="journal"
-              title="Journal"
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon
-              focused={focused}
-              icon="settings"
-              title="Settings"
-            />
-          ),
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: "Home",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused} icon="home" title="Home" />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="journal"
+          options={{
+            title: "Journal",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused} icon="journal" title="Journal" />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="settings"
+          options={{
+            title: "Settings",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused} icon="settings" title="Settings" />
+            ),
+          }}
+        />
+      </Tabs>
+    </SafeAreaProvider>
   );
 };
 
 export default _layout;
-
 
 // import { Tabs } from "expo-router";
 // import React from "react";
@@ -161,7 +154,7 @@ export default _layout;
 //             <TabIcon
 //               focused={focused}
 //               // icon={<Ionicons name="journal" size={24} color="#000" />}
-//               title="Journal" 
+//               title="Journal"
 //             />
 //           ),
 //         }}
