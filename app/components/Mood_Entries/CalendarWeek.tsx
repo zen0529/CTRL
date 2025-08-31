@@ -28,7 +28,6 @@ const CalendarWeek = () => {
   return (
     <View style={styles.container}>
       <WeekCalendar
-        testID="calendar"
         current={selectedDate}
         onDayPress={onDayPress}
         markedDates={markedDates}

@@ -5,15 +5,17 @@ import "./global.css";
 
 export default function RootLayout() {
   useEffect(() => {
-    LogBox.ignoreLogs(['Warning: ...']); // Ignore specific logs
+    LogBox.ignoreLogs(["Warning: ..."]); // Ignore specific logs
   }, []);
 
   return (
-    <Stack 
-      screenOptions={{ 
-        headerShown: false,
-        animation: 'none' // Reduce initial animation complexity
-      }}
-    />
+    <>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          animation: "none", // Reduce initial animation complexity
+        }}
+      />
+    </>
   );
 }

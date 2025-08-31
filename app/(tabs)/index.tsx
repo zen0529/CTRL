@@ -1,15 +1,15 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { s, vs } from "react-native-size-matters";
+import CalendarModal from "../components/Mood_Entries/CustomCalendarModal";
 
-const index = () => {
+const Index = () => {
   const insets = useSafeAreaInsets();
   const month = new Date().toLocaleString("default", { month: "long" });
-  const router = useRouter();
-  const [modal, setModal] = useState(false);
+  // const router = useRouter();
+  const [modalVisible, setModalVisible] = useState(false);  
   return (
     <View
       style={{
@@ -27,16 +27,17 @@ const index = () => {
           style={{ paddingHorizontal: s(20), paddingTop: vs(10) }}
         >
           <Text>{month}</Text>
-          <TouchableOpacity onPress={() => router.push('/components/calendar/Calendar')}>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
             <Ionicons name="calendar" size={24} color="#007AFF"></Ionicons>
           </TouchableOpacity >
           {/* <Calendar /> */}
+          <CalendarModal visible={modalVisible} onClose={() => setModalVisible(false) } month={month}/>
         </View>
       </View>
     </View>
   );
 };
 
-export default index;
+export default Index;
 
 const styles = StyleSheet.create({});
