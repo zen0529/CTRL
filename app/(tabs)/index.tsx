@@ -1,46 +1,58 @@
-import llm from "@/services/llm";
+import { userInput } from "@/interfaces/interface";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { s, vs } from "react-native-size-matters";
-import CalendarModal from "../components/Mood_Entries/CustomCalendarModal";
+import CalendarModal from "../components/mood_entries/custom_calendar_modal";
+const input: userInput = {
+  energy_level: 1,
+  energy_states: ["not energize"],
+  emotional_states: ["sad"],
+  mental_states: [],
+  social_or_relational_states: [],
+  achievement_or_purpose_states: [],
+};
+
 
 const Index = () => {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
-  const month = new Date().toLocaleString("default", { month: "long" });
-  console.log("==== TEST LOG ===="); // Add this simple log
-  
-    useEffect(() => {
-    const fetchLLM = async () => {
-      try {
-        const result = await llm();
-        console.log(`LLM result:`, result);
-      } catch (error) {
-        console.error('Error calling LLM:', error);
-      }
-      console.log('==== TEST LOG ====');  // Add this simple log
-    };
-
-    fetchLLM();
-  }, []);
-
   const [modalVisible, setModalVisible] = useState(false);
+  const month = new Date().toLocaleString("default", { month: "long" });
+
+  //for generating recommended action
+  // useEffect(() => {
+  //   const fetchLLM = async () => {
+  //     try {
+  //       console.log("input", input);
+  //       const recommendedAction = await FetchRecommendedAction(input);
+  //       console.log("Recommended Action:", recommendedAction);
+  //     } catch (error) {
+  //       console.error("Error calling LLM:", error);
+  //     }
+  //   };
+
+  //   fetchLLM();
+  // }, []);
+
   return (
     <View
       style={{
         paddingTop: insets.top,
-        // paddingRight: insets.right,
+        marginLeft: s(15),
+        marginRight: s(15),
       }}
-      className="h-full w-full"
+      className="flex-1"
     >
-      <View
-        className="flex-col border border-black"
-        style={{ marginLeft: s(20), marginRight: s(20) }}
-      >
-        <View
+      <View className="flex-col border border-black" style={{
+        paddingHorizontal: s(10),
+        paddingVertical: vs(10),
+        marginBottom: vs(20),
+      }}>
+        <View 
           className="flex-row justify-between items-between"
-          style={{ paddingHorizontal: s(20), paddingTop: vs(10) }}
         >
           <Text>{month}</Text>
           <TouchableOpacity onPress={() => setModalVisible(true)}>
@@ -53,6 +65,15 @@ const Index = () => {
             month={month}
           />
         </View>
+      </View>
+      <View className="flex-col border border-black">
+        <Text className="font-bold" style={{ marginBottom: vs(5) }}>{"Today's Reflection "}</Text>
+        <Text style={{ marginBottom: vs(10) }}>Draw a CTRL card and begin your {"\n"} 
+          self awareness journey
+        </Text>
+        <TouchableOpacity onPress={() => router.push("/pages/mood_checkin")} className="flex-row justify-center align-center bg-blue-950 rounded-md" style={{width: s(80)}}>
+          <Text style={{ paddingVertical: vs(5), paddingHorizontal: s(5) }} className="text-white">Draw Card</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
