@@ -1,3 +1,6 @@
+  
+  export const labels = ["DRAINED", "NEUTRAL", "PEAK"];
+  
   export const emotional_states = [
     "joy",
     "love",
