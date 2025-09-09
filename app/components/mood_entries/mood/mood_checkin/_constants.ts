@@ -1,7 +1,7 @@
   
   export const labels = ["DRAINED", "NEUTRAL", "PEAK"];
   
-  export const emotional_states = [
+  export const emotionalStates = [
     "joy",
     "love",
     "pride",
@@ -26,7 +26,7 @@
     // "frustration",
   ];
 
-  export const energy_states = [
+  export const energyStates = [
     "energized",
     "restless",
     "hyper",
@@ -43,7 +43,7 @@
     // "drained",
   ];
 
-  export const mental_states = [
+  export const mentalStates = [
     "focused",
     "concentrated",
     "distracted",
@@ -59,7 +59,7 @@
     "flow",
   ];
 
-  export const social_relational_states = [
+  export const socialRelationalStates = [
     "connected",
     "supported",
     "appreciated",
@@ -78,7 +78,7 @@
     "safe",
   ];
 
-  export const achievement_purpose_states = [
+  export const achievementPurposeStates = [
     "motivated",
     "ambitious",
     "purposeful",

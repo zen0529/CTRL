@@ -4,29 +4,34 @@ import { Text, View } from "react-native";
 import { vs } from "react-native-size-matters";
 import { labels } from "../_constants";
 
-const [energy_level, set_energy_level] = React.useState(5);
+type energyLevelProps = {
+  energyLevel: number;
+  setEnergyLevel: React.Dispatch<React.SetStateAction<number>>;
+}
 
-export const SliderComp = () => {
+const EnergyLevel = ({energyLevel, setEnergyLevel }: energyLevelProps) => {
   return (
     <>
       <View className="flex-row justify-between align-center">
         <Text>Energy Level</Text>
         <Text>Icon</Text>
       </View>
-      <Myslider />
+      <Myslider energyLevel={energyLevel} setEnergyLevel={setEnergyLevel} />
       <SliderLabels />
     </>
   );
 };
 
-const Myslider = () => {
+export default EnergyLevel;
+
+const Myslider = ({energyLevel, setEnergyLevel}: energyLevelProps) => {
+
   return (
     <View>
       <Slider
-        value={energy_level}
+        value={energyLevel}
         onValueChange={(val: number) => {
-          console.log(val);
-          set_energy_level(val);
+          setEnergyLevel(val);
         }}
         style={{ marginVertical: vs(20), height: vs(10) }}
         minimumValue={1}
@@ -38,6 +43,7 @@ const Myslider = () => {
     </View>
   );
 };
+
 
 const SliderLabels = () => {
   return (

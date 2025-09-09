@@ -1,4 +1,4 @@
- export const createToggle = (
+const useToggle = (
     selected: string[],
     setSelected: React.Dispatch<React.SetStateAction<string[]>>
   ) => {
@@ -10,3 +10,5 @@
       }
     };
   };
+
+export default useToggle;

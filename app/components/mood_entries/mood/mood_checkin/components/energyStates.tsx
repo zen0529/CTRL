@@ -1,13 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { vs } from "react-native-size-matters";
-import { energy_states } from "../_constants";
-import { createToggle } from "../hooks/useToggle";
+import { energyStates } from "../_constants";
+import useToggle from "../hooks/useToggle";
 
-const [selected_energy, set_selected_energy] = React.useState<string[]>([]);
-
-const toggle_energy = createToggle(selected_energy, set_selected_energy);
-export const EnergyStates = () => {
+type energyStatesProps = {
+  selected_energy: string[];
+  set_selected_energy: React.Dispatch<React.SetStateAction<string[]>>;
+};
+const EnergyStates = ({selected_energy, set_selected_energy} : energyStatesProps) => {
+  const toggle_energy = useToggle(selected_energy, set_selected_energy);
   return (
     <>
       <Text className="font-bold" style={{ marginBottom: vs(5) }}>
@@ -17,7 +19,7 @@ export const EnergyStates = () => {
         style={[styles.wrapContainer, { marginBottom: vs(15) }]}
         className="border border-black"
       >
-        {energy_states.map((energy) => (
+        {energyStates.map((energy) => (
           <TouchableOpacity
             key={energy}
             onPress={() => {
@@ -43,6 +45,7 @@ export const EnergyStates = () => {
   );
 };
 
+export default EnergyStates;
 const styles = StyleSheet.create({
   wrapContainer: {
     flexDirection: "row",

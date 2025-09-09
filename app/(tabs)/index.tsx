@@ -1,19 +1,11 @@
-import { userInput } from "@/interfaces/interface";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { s, vs } from "react-native-size-matters";
-import CalendarModal from "../components/mood_entries/custom_calendar_modal";
-const input: userInput = {
-  energy_level: 1,
-  energy_states: ["not energize"],
-  emotional_states: ["sad"],
-  mental_states: [],
-  social_or_relational_states: [],
-  achievement_or_purpose_states: [],
-};
+import CalendarModal from "../components/mood_entries/calendar/custom_calendar_modal";
+
 
 
 const Index = () => {
@@ -71,7 +63,7 @@ const Index = () => {
         <Text style={{ marginBottom: vs(10) }}>Draw a CTRL card and begin your {"\n"} 
           self awareness journey
         </Text>
-        <TouchableOpacity onPress={() => router.push("/pages/mood_checkin")} className="flex-row justify-center align-center bg-blue-950 rounded-md" style={{width: s(80)}}>
+        <TouchableOpacity onPress={() => router.push("/components/mood_entries/mood/mood_checkin/moodCheckInPage")} className="flex-row justify-center align-center bg-blue-950 rounded-md" style={{width: s(80)}}>
           <Text style={{ paddingVertical: vs(5), paddingHorizontal: s(5) }} className="text-white">Draw Card</Text>
         </TouchableOpacity>
       </View>
@@ -81,4 +73,3 @@ const Index = () => {
 
 export default Index;
 
-const styles = StyleSheet.create({});
