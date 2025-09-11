@@ -1,12 +1,16 @@
+import AntDesign from "@expo/vector-icons/AntDesign";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Octicons from "@expo/vector-icons/Octicons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { s, vs } from "react-native-size-matters";
-import CalendarModal from "../components/mood_entries/calendar/custom_calendar_modal";
-
-
+import StatCard from "../components/cards/statCard";
+import DrawCard from "../components/draw-card/drawCard";
+import Header from "../components/home-page/header";
+import CalendarWeek from "../components/mood_entries/calendar/calendarWeek";
+import CalendarModal from "../components/mood_entries/calendar/customCalendarModal";
 
 const Index = () => {
   const router = useRouter();
@@ -32,44 +36,60 @@ const Index = () => {
   return (
     <View
       style={{
+        flex: 1,
+        backgroundColor: "#fff",
         paddingTop: insets.top,
-        marginLeft: s(15),
-        marginRight: s(15),
       }}
-      className="flex-1"
     >
-      <View className="flex-col border border-black" style={{
-        paddingHorizontal: s(10),
-        paddingVertical: vs(10),
-        marginBottom: vs(20),
-      }}>
-        <View 
-          className="flex-row justify-between items-between"
+      <View
+        style={{
+          marginLeft: s(15),
+          marginRight: s(15),
+        }}
+      >
+        <Header />
+        <View
+          className="flex-col border border-black"
+          style={{
+            paddingHorizontal: s(10),
+            paddingVertical: vs(10),
+            marginBottom: vs(20),
+          }}
         >
-          <Text>{month}</Text>
-          <TouchableOpacity onPress={() => setModalVisible(true)}>
-            <Ionicons name="calendar" size={24} color="#007AFF"></Ionicons>
-          </TouchableOpacity>
-          {/* <Calendar /> */}
-          <CalendarModal
-            visible={modalVisible}
-            onClose={() => setModalVisible(false)}
-            month={month}
-          />
+          <View className="flex-row justify-between items-between ">
+            <Text className="font-bold text-xl">{month}</Text>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+              <Ionicons name="calendar" size={24} color="#007AFF"></Ionicons>
+            </TouchableOpacity>
+            {/* <Calendar /> */}
+            <CalendarModal
+              visible={modalVisible}
+              onClose={() => setModalVisible(false)}
+              month={month}
+            />
+          </View>
+          <CalendarWeek />
         </View>
-      </View>
-      <View className="flex-col border border-black">
-        <Text className="font-bold" style={{ marginBottom: vs(5) }}>{"Today's Reflection "}</Text>
-        <Text style={{ marginBottom: vs(10) }}>Draw a CTRL card and begin your {"\n"} 
-          self awareness journey
-        </Text>
-        <TouchableOpacity onPress={() => router.push("/components/mood_entries/mood/mood_checkin/moodCheckInPage")} className="flex-row justify-center align-center bg-blue-950 rounded-md" style={{width: s(80)}}>
-          <Text style={{ paddingVertical: vs(5), paddingHorizontal: s(5) }} className="text-white">Draw Card</Text>
-        </TouchableOpacity>
+        {/* DrawCardComponent */}
+        <DrawCard />
+        <View className="flex-row">
+          <StatCard
+            icon={
+              <Octicons
+                // style={{ marginRight: vs(10) }}
+                name="checklist"
+                size={24}
+                color="orange"
+              />
+            }
+            label="Entries"
+            value={22}
+          />
+          <StatCard icon={<AntDesign name="hearto" size={24} color="red" />} label="Favorites" value={5} />
+        </View>
       </View>
     </View>
   );
 };
 
 export default Index;
-

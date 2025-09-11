@@ -1,5 +1,6 @@
 {
   "expo": {
+    "backgroundColor":"#ffffff",
     "name": "CTRL",
     "slug": "CTRL",
     "version": "1.0.0",

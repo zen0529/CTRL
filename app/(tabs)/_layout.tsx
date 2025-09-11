@@ -35,7 +35,7 @@ const _layout = () => {
   return (
     // hiding index screen from the header
     <SafeAreaProvider>
-      <Tabs
+      <Tabs 
         screenOptions={{
           tabBarShowLabel: false,
           tabBarItemStyle: {
