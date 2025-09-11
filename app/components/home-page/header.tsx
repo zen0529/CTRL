@@ -9,7 +9,7 @@ const Header = () => {
   const user = "John";
   const streakNumber = 1;
   return (
-    <View className="border border-black flex-row justify-between items-center">
+    <View className="border border-black flex-row justify-between items-center" style={{marginBottom: vs(20)}}>
       <View className="flex-row items-center justify-center">
         <Text style={{marginRight: s(5)}} className='font-bold text-2xl'>Hello, {user}!</Text>
         <MaterialCommunityIcons name="crown-outline" size={27} color="black" />
