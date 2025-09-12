@@ -9,7 +9,7 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import { s, vs } from "react-native-size-matters";
-import StatCard from "../components/cards/statCard";
+import StatCard from "../components/authentication/cards/statCard";
 import DrawCard from "../components/draw-card/drawCard";
 import Header from "../components/home-page/header";
 import CalendarWeek from "../components/mood_entries/calendar/calendarWeek";
