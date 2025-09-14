@@ -7,13 +7,13 @@ const GoogleAppleLogin = () => {
     <View className="flex-row justify-center items-center">
       <View style={[styles.container, {marginRight: s(20)} ] } >
         <Image
-          source={require("../../../../assets/icons/authentication/google.png")}
+          source={require("../assets/icons/google.png")}
           style={{ width: 30, height: 30 }}
         />
       </View>
       <View style={styles.container}>
         <Image
-          source={require("../../../../assets/icons/authentication/apple-logo.png")}
+          source={require("../assets/icons/apple-logo.png")}
           style={{ width: 30, height: 30 }}
         />
       </View>

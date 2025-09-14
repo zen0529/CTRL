@@ -1,7 +1,6 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Octicons from "@expo/vector-icons/Octicons";
-import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import {
@@ -16,7 +15,6 @@ import CalendarWeek from "../components/mood_entries/calendar/calendarWeek";
 import CalendarModal from "../components/mood_entries/calendar/customCalendarModal";
 
 const Index = () => {
-  const router = useRouter();
   const insets = useSafeAreaInsets();
   const [modalVisible, setModalVisible] = useState(false);
   const month = new Date().toLocaleString("default", { month: "long" });
@@ -51,7 +49,11 @@ const Index = () => {
             marginRight: s(15),
           }}
         >
+
+          {/* header */}
           <Header />
+
+          {/* Calendar View */}
           <View
             className="flex-col border border-black"
             style={{
@@ -61,26 +63,35 @@ const Index = () => {
             }}
           >
             <View className="flex-row justify-between items-between ">
+
+              {/* Calendar Month Text */}
               <Text className="font-bold text-xl">{month}</Text>
               <TouchableOpacity onPress={() => setModalVisible(true)}>
                 <Ionicons name="calendar" size={24} color="#007AFF"></Ionicons>
               </TouchableOpacity>
-              {/* <Calendar /> */}
+
+              {/* Calendar modal */}
               <CalendarModal
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}
                 month={month}
               />
             </View>
+            
+            {/* Calendar Week */}
             <CalendarWeek />
           </View>
+
           {/* DrawCardComponent */}
           <DrawCard />
+
+            {/* Number of entries and favorites */}
           <View className="flex-row">
+
+            {/* Number of entries */}
             <StatCard
               icon={
                 <Octicons
-                  // style={{ marginRight: vs(10) }}
                   name="checklist"
                   size={24}
                   color="orange"
@@ -89,6 +100,8 @@ const Index = () => {
               label="Entries"
               value={22}
             />
+
+            {/* Favorites */}
             <StatCard
               icon={<AntDesign name="hearto" size={24} color="red" />}
               label="Favorites"

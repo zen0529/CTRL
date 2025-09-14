@@ -1,12 +1,15 @@
+import { useRouter } from "expo-router";
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { s, vs } from "react-native-size-matters";
 import CustomButton from "./components/authentication/buttons/authenticationButton";
 import SectionDivider from "./components/authentication/divider/SectionDivider";
 import GoogleAppleLogin from "./components/authentication/google-apple-login/googleAppleLogin";
-import CustomTextInput from "./components/text-inputs/textInputs";
+import CustomTextInput from "./components/authentication/text-input/textInputs";
 
 const Signup = () => {
+  const router = useRouter();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#0F3262" }}>
       <View
@@ -59,9 +62,17 @@ const Signup = () => {
           />
         </View>
 
-        <View style={{marginBottom: vs(20), marginTop: vs(10) }} className="flex-row items-center justify-center">
-          <Text className="text-[12px]">{'By Clicking Sign Up, you agree with our\t'}</Text>
-          <Text className="color-blue-400 text-[12px]"> Terms and Conditions</Text>
+        <View
+          style={{ marginBottom: vs(20), marginTop: vs(10) }}
+          className="flex-row items-center justify-center"
+        >
+          <Text className="text-[12px]">
+            {"By Clicking Sign Up, you agree with our\t"}
+          </Text>
+          <Text className="color-blue-400 text-[12px]">
+            {" "}
+            Terms and Conditions
+          </Text>
         </View>
 
         {/* login button */}
@@ -77,6 +88,13 @@ const Signup = () => {
         {/* google apple sign up button */}
         <View>
           <GoogleAppleLogin />
+        </View>
+
+        {/* temporary sign up button */}
+        <View>
+          <TouchableOpacity onPress={() => router.push("/login")}>
+            <Text>Login</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

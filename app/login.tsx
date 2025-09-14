@@ -6,7 +6,7 @@ import { s, vs } from "react-native-size-matters";
 import CustomButton from "./components/authentication/buttons/authenticationButton";
 import SectionDivider from "./components/authentication/divider/SectionDivider";
 import GoogleAppleLogin from "./components/authentication/google-apple-login/googleAppleLogin";
-import CustomTextInput from "./components/text-inputs/textInputs";
+import CustomTextInput from "./components/authentication/text-input/textInputs";
 
 const Login = () => {
 
